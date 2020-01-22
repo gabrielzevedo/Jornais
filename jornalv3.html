@@ -1,0 +1,670 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sistema de Preços v1.0</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="avgrund.css">
+        <style>
+
+#bing{
+position:absolute;
+width:100%;
+height:100%;
+z-index:-999;
+background-size:cover !important;
+}
+            * {
+	           margin: 0;
+	           padding: 0;
+            }
+
+            html,
+            body {
+	           height: 100%;
+	           overflow: hidden;
+            }
+
+            html {
+	           background-color: #222;
+            }
+            
+            
+            @keyframes fundo {
+                from {margin-top: 0px; margin-right: 0px; opacity: 0; transform: scale(1.2);}
+                to {margin-top: 0px; opacity: 1; transform: scale(1);}
+            }
+            #logo1::after, #logo2::after, #logo3::after, #logo4::after, #logo5::after, #logo6::after, #logo7::after, #logo8::after, #logo9::after, #logo10::after, #logo11::after, #logo12::after, #logo13::after, #logo14::after{
+                content: attr(data-value);
+                background: #1E1D1C;
+                width: 5px;
+                padding: 5px;
+                height: 5px;
+                position: static;
+                color: #FFF;
+                line-height: 5px;
+                font-family: sans-serif;
+                font-size: 10px;
+                z-index: 999;
+                margin-left: -16px;
+                margin-top: 1px;
+            }
+            #logo1, #logo2, #logo3, #logo4, #logo5, #logo6, #logo7, #logo8, #logo9, #logo10, #logo11, #logo12, #logo13, #logo14{
+                width:150px;
+                height:150px;
+                padding:1.5px;
+                transition: all ease 250ms;
+                animation: surgir-bloco 500ms ease-out 1;
+                display: inline-flex;
+                transition: all ease 250ms;
+            }
+            img{
+                width:150px;
+                height:150px;
+                padding:1.5px;
+                transition: all ease 250ms;
+                animation: surgir-bloco 500ms ease-out 1;
+            }
+            #logo1:active, #logo2:active, #logo3:active, #logo4:active, #logo5:active, #logo6:active, #logo7:active, #logo8:active, #logo9:active, #logo10:active, #logo11:active, #logo12:active, #logo13:active, #logo14:active{
+                transform: scale(0.9);
+            }
+            #logos{
+                float: left;
+                text-align:center;
+                margin: 0 auto;
+            }
+            #logos2{
+                float: right;
+            }
+            #row{
+                background: rgba(170, 170, 170, 0.48);
+                font-family: arial;
+                padding: 10px;
+                width: 290px;
+                margin: 0 auto;
+                border-radius: 2px 0px 0px 2px;
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.32);
+                color: #262625;
+                text-shadow: 1px 1px #737373;
+                display: inline;
+                line-height: 37px;
+                padding-bottom: 11px;
+                padding-top: 8px;
+            }
+            
+            @keyframes surgir-bloco {
+                from {margin-top: 0px; margin-right: 0px; opacity: 0; transform: scale(0.9);}
+                to {margin-top: 0px; opacity: 1; transform: scale(1);}
+            }
+            #tradicional{
+                display: none;
+            }
+            #tradicional:target{
+                display: block;
+                animation: surgir-bloco 500ms ease-out 1;
+            }
+            #log{
+                font-family: arial;
+                height: 30px !important;
+                width: 300px !important;
+                padding: 10px;
+            }
+            #log-res{
+                background: rgba(255, 255, 255, 0.48);
+                font-family: arial;
+                text-align: center;
+                padding: 10px;
+                width: 42px;
+                border: 0px solid;
+                margin: 0 auto;
+                border-radius: 0px 2px 2px 0px;
+                color: #FFFFFF;
+                text-shadow: 1px 1px #737373;
+                height: 16px;
+            }
+            #todo{
+                width: 200%;
+                margin-top: 20%;
+                margin-left: 10%;
+                transition: all ease 500ms;
+            }
+            #proximo, #anterior, #calcular, #clonar{
+                background: transparent;
+                border: 0;
+            }
+            @keyframes surgir {
+                from {opacity: 0;}
+                to {opacity: 1;}
+            }
+	
+            .proximo{
+                -webkit-filter: brightness(5);
+                animation: surgir 1s ease 1;
+                position: absolute;
+                right: 10%;
+                width: 30px;
+                height: 30px;
+            }
+	#proximo{display:block;}
+            
+            .anterior{
+                -webkit-filter: brightness(5);
+                transform: rotateY(190deg);
+                animation: surgir 1s ease 1;
+                position: absolute;
+                left: 10%;
+                width: 30px;
+                height: 30px;
+            }
+            .calcular{
+                -webkit-filter: brightness(5);
+                animation: surgir 1s ease 1;
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 13%;
+            }
+	   .clonar{
+                -webkit-filter: brightness(5);
+                animation: surgir 1s ease 1;
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 16%;
+            }
+            button:focus{
+                outline: 0px;
+            }
+            .t1{
+                font-size: 16px;
+                float: left;
+                font-family: arial;
+                margin-right: 3px;
+            }
+            .t2{
+                font-size: 14px;
+                float: left;
+                font-family: arial;
+            }
+            #fechar{
+                background: #0F0F0F;
+                color: #FFF;
+                border: 0px solid;
+                font-size: 16px;
+                line-height: 1px;
+                /* border-radius: 500px; */
+                width: 40px;
+                height: 22px;
+                position: absolute;
+                top: 0px;
+                right: 4px;
+            }
+            aside{
+                padding-top: 25px;
+                height: 101px;
+            }
+.saudacao{
+    font-family: Segoe UI Light;
+    color: #FFF;
+    font-size: 50px;
+    font-weight: 100;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+}
+        </style>
+        <script>
+			function openDialog() {
+				Avgrund.show( "#default-popup" );
+                salvar();
+                salvar2();
+                document.getElementById("resultado1").innerHTML = "R$ "+localStorage.getItem('total');
+                document.getElementById("resultado2").innerHTML = "R$ "+localStorage.getItem('total2');
+                var total3 = eval(localStorage.getItem('total'))-eval(localStorage.getItem('total2'));
+                document.getElementById("resultado3").innerHTML = "R$ "+total3;
+			}
+			function closeDialog() {
+				Avgrund.hide();
+			}
+		</script>
+
+    </head>
+    
+    <body oncontextmenu="return false" style="overflow:hidden;">
+
+<div id="bing"></div>
+
+
+	<SCRIPT LANGUAGE="JavaScript"> 
+
+var telaAtual = 1;
+
+function setarlocalstorage(){
+var i = 1;
+            jornal = [];
+            if (localStorage.getItem('jornal1') && localStorage.getItem('jornal7')) {
+                while (i <= 14) {
+                        jornal[i] = localStorage.getItem('jornal'+i);
+                        document.getElementById("logo"+i).setAttribute('data-value', localStorage.getItem('jornal'+i));
+                    i++;
+                }
+            }else{
+            while (i <= 14) {
+                jornal[i]=0;
+                        document.getElementById("logo1").setAttribute('data-value', jornal[1]);
+                        document.getElementById("logo2").setAttribute('data-value', jornal[2]);
+                        document.getElementById("logo3").setAttribute('data-value', jornal[3]);
+                        document.getElementById("logo4").setAttribute('data-value', jornal[4]);
+                        document.getElementById("logo5").setAttribute('data-value', jornal[5]);
+                        document.getElementById("logo6").setAttribute('data-value', jornal[6]);
+                        document.getElementById("logo7").setAttribute('data-value', jornal[7]);
+                        document.getElementById("logo8").setAttribute('data-value', jornal[8]);
+                        document.getElementById("logo9").setAttribute('data-value', jornal[9]);
+                        document.getElementById("logo10").setAttribute('data-value', jornal[10]);
+                        document.getElementById("logo11").setAttribute('data-value', jornal[11]);
+                        document.getElementById("logo12").setAttribute('data-value', jornal[12]);
+                        document.getElementById("logo13").setAttribute('data-value', jornal[13]);
+                        document.getElementById("logo14").setAttribute('data-value', jornal[14]);
+                i++;
+            }
+            }
+}
+		d = new Date();
+		hour = d.getHours();
+		if(hour < 5){
+		   document.write("<p class='saudacao'>Boa Noite!</p>");
+		}
+		else
+			if(hour < 8){
+			   document.write("<p class='saudacao'>Bom Dia!</p>");
+			}
+			else
+				if(hour < 12){
+   					document.write("<p class='saudacao'>Bom Dia!</p>");
+				}
+				else
+					if(hour < 18){
+  						 document.write("<p class='saudacao'>Boa Tarde!</p>");
+					}
+					else{
+   					document.write("<p class='saudacao'>Boa Noite!</p>");
+					}
+</SCRIPT>
+        
+        <aside style="padding-top: 25px; height: 101px;" id="default-popup" class="avgrund-popup">
+			<p class="t1">Entrada: </p><div id="resultado1" class="t2">R$ 0.00</div><br>
+			<p class="t1">Sobra: </p><div id="resultado2" class="t2">R$ 0.00</div><br>
+            <hr style="margin-top: 20px;"><br>
+            <p class="t1">Em caixa: </p><div id="resultado3" class="t2">R$ 0.00</div><br>
+            <br>
+			<button id="fechar" onclick="javascript:closeDialog();">x</button>
+		</aside>
+        
+        <script>
+
+
+            var i =1;
+            jornal = [];
+            
+            function mais(x){
+                var i = 1;
+                while (i <= 14) {
+                    if (x == i){
+                        jornal[i] = eval(jornal[i])+1;
+                        document.getElementById("logo"+i).setAttribute('data-value', jornal[i]);
+                    }
+                    i++;
+                }
+            }
+            function menos(x){
+                var i = 1;
+                while (i <= 14) {
+                  if (jornal[i] > 0)
+                    if (x == i){
+                        jornal[i] = eval(jornal[i])-1;
+                        document.getElementById("logo"+i).setAttribute('data-value', jornal[i]);
+                    }
+                    i++;
+                }
+            }
+            
+	function clonar(){
+	var i = 8;
+            if (localStorage.getItem('jornal1') && localStorage.getItem('jornal7')) {
+                while (i <= 14) {
+                        jornal[i] = localStorage.getItem('jornal'+(i-7));
+			localStorage.setItem('jornal'+i, jornal[i]);
+			document.getElementById("logo"+i).setAttribute('data-value', jornal[i]);
+                    i++;
+                }
+            }
+	}
+        </script>
+        
+        <div id="todo">
+        <div id="logos" onmouseout="salvar()">
+            <div id="logo1"><img id="extrab" src="extra.png" onclick="mais(1)" oncontextmenu="menos(1)"/></div>
+            <div id="logo2"><img id="lanceb" src="lance.png" onclick="mais(2)" oncontextmenu="menos(2)"/></div>
+            <div id="logo3"><img id="diab" src="dia.png" onclick="mais(3)" oncontextmenu="menos(3)"/></div>
+            <div id="logo4"><img id="meiab" src="meia.png" onclick="mais(4)" oncontextmenu="menos(4)"/></div>
+            <div id="logo5"><img id="expressob" src="expresso.png" onclick="mais(5)" oncontextmenu="menos(5)"/></div>
+            <div id="logo6"><img id="folhab" src="folha.png" onclick="mais(6)" oncontextmenu="menos(6)"/></div>
+            <div id="logo7"><img id="globob" src="globo.png" onclick="mais(7)" oncontextmenu="menos(7)"/></div>
+        </div>
+        <div id="logos2" onmouseout="salvar2()">
+            <div id="logo8"><img id="extrab" src="extra.png" onclick="mais(8)" oncontextmenu="menos(8)"/></div>
+            <div id="logo9"><img id="lanceb" src="lance.png" onclick="mais(9)" oncontextmenu="menos(9)"/></div>
+            <div id="logo10"><img id="diab" src="dia.png" onclick="mais(10)" oncontextmenu="menos(10)"/></div>
+            <div id="logo11"><img id="meiab" src="meia.png" onclick="mais(11)" oncontextmenu="menos(11)"/></div>
+            <div id="logo12"><img id="expressob" src="expresso.png" onclick="mais(12)" oncontextmenu="menos(12)"/></div>
+            <div id="logo13"><img id="folhab" src="folha.png" onclick="mais(13)" oncontextmenu="menos(13)"/></div>
+            <div id="logo14"><img id="globob" src="globo.png" onclick="mais(14)" oncontextmenu="menos(14)"/></div>
+        </div>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br>
+        
+
+        <script src="jquery.js"></script>
+        <script>
+	bing();
+	//setar do localstorage
+            setarlocalstorage();
+            jornalV = [];
+            jornalV[1] = 1.50;
+            jornalV[2] = 2.00;
+            jornalV[3] = 1.50;
+            jornalV[4] = 1.00;
+            jornalV[5] = 0.75;
+            jornalV[6] = 4.00;
+            jornalV[7] = 4.00;
+            jornalV[8] = 1.50;
+            jornalV[9] = 2.00;
+            jornalV[10] = 1.50;
+            jornalV[11] = 1.00;
+            jornalV[12] = 0.75;
+            jornalV[13] = 4.00;
+            jornalV[14] = 4.00;
+            
+            jornalT = [];
+            total = 0;
+            total2 = 0;
+            localStorage.setItem('total', total);
+            localStorage.setItem('total2', total2);
+            
+            function proximo(){
+		telaAtual = 2;
+                document.getElementById("todo").style.marginLeft = "-110%";
+                document.getElementById("anterior").style.display = "block";
+                document.getElementById("proximo").style.display = "none";
+                document.getElementById("calcular").style.display = "block";
+		document.getElementById("clonar").style.display = "block";
+            }
+            
+            function salvar(){
+                i = 1;
+                while (i <= 7) {
+                    jornalT[i] = jornalV[i]*jornal[i];
+                    localStorage.setItem('jornal'+i, jornal[i]);
+                    i++;
+                }
+                
+                total = jornalT[1]+jornalT[2]+jornalT[3]+jornalT[4]+jornalT[5]+jornalT[6]+jornalT[7];
+                localStorage.setItem('total', total);
+                //alert(total);
+		salvar2();
+            }
+            function anterior(){
+		telaAtual = 1;
+                document.getElementById("todo").style.marginLeft = "10%";
+                document.getElementById("anterior").style.display = "none";
+                document.getElementById("proximo").style.display = "block";
+                document.getElementById("calcular").style.display = "none";
+		document.getElementById("clonar").style.display = "none";
+            }
+            function salvar2(){
+                i = 8;
+                while (i <= 14) {
+                    jornalT[i] = jornalV[i]*jornal[i];
+                    localStorage.setItem('jornal'+i, jornal[i]);
+                    i++;
+                }
+                
+                total2 = jornalT[8]+jornalT[9]+jornalT[10]+jornalT[11]+jornalT[12]+jornalT[13]+jornalT[14];
+                localStorage.setItem('total2', total2);
+                //alert(total2);
+            }
+            
+function bing(){
+var downloadingImage = new Image();
+downloadingImage.onload = function(){ 
+//http://www.bing.com/HPImageArchive.aspx?format=rss&idx=0&n=1&mkt=pt-BR
+$.ajax({
+    url      : 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bing.com%2FHPImageArchive.aspx%3Fformat%3Drss%26idx%3D0%26n%3D1%26mkt%3Dpt-BR',
+    dataType : 'json',
+    success  : function (data) {
+    var imgLink = data.items[0].link.replace("_1366x768", "_1920x1080");
+
+
+      document.getElementById("bing").style.background="linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + imgLink + "')";
+document.getElementById("bing").style.animation="fundo 2s ease 1";
+      
+    }
+  });
+};
+downloadingImage.src = "back.png";
+//funcao ler mouse scroll
+ //Firefox
+ $('body').bind('DOMMouseScroll', function(e){
+     if(e.originalEvent.detail > 0) {
+         //scroll down
+         console.log('Down');
+         anterior();
+     }else {
+         //scroll up
+         console.log('Up');
+         proximo();
+     }
+
+     //prevent page fom scrolling
+     return false;
+ });
+
+ //IE, Opera, Safari
+ $('body').bind('mousewheel', function(e){
+     if(e.originalEvent.wheelDelta < 0) {
+         //scroll down
+         console.log('Down');
+anterior();
+     }else {
+         //scroll up
+         console.log('Up');
+proximo();
+     }
+
+     //prevent page fom scrolling
+     return false;
+ });
+}
+        </script>
+        <button onclick="anterior()" style="display:none;" id="anterior"><img class="anterior" src="seta.png"></button>
+        <button onclick="proximo()" id="proximo"><img class="proximo" src="seta.png"></button>
+        <button style="display:none;" onclick="openDialog();" id="calcular"><img class="calcular" src="calcular.png"></button>
+	<button style="display:none;" onclick="clonar();" id="clonar"><img class="clonar" src="clonar.png"></button>
+    <div class="avgrund-cover"></div>
+
+		<script type="text/javascript" src="avgrund.js"></script>
+<script>
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    
+if(e.keyCode == 32){
+	openDialog();
+}
+if(e.keyCode == 37){
+	anterior();
+}
+if(e.keyCode == 39){
+	proximo();
+}
+if ( e.ctrlKey && (e.which == 86 || e.which==118) ) {
+	clonar();
+}
+
+
+if(telaAtual == 1){
+    
+	if(e.keyCode == 113 || e.keyCode == 81){
+	mais(1);
+	salvar();
+	}
+	if(e.keyCode == 97 || e.keyCode == 65){
+	menos(1);
+	salvar();
+	}
+
+	if(e.keyCode == 119 || e.keyCode == 87){
+	mais(2);
+	salvar();
+	}
+	if(e.keyCode == 115 || e.keyCode == 83){
+	menos(2);
+	salvar();
+	}
+
+	if(e.keyCode == 101 || e.keyCode == 69){
+	mais(3);
+	salvar();
+	}
+	if(e.keyCode == 100 || e.keyCode == 68){
+	menos(3);
+	salvar();
+	}
+
+	if(e.keyCode == 114 || e.keyCode == 82){
+	mais(4);
+	salvar();
+	}
+	if(e.keyCode == 102 || e.keyCode == 70){
+	menos(4);
+	salvar();
+	}
+
+	if(e.keyCode == 84){
+	mais(5);
+	salvar();
+	}
+	if(e.keyCode == 103 || e.keyCode == 71){
+	menos(5);
+	salvar();
+	}
+
+	if(e.keyCode == 121 || e.keyCode == 89){
+	mais(6);
+	salvar();
+	}
+	if(e.keyCode == 104 || e.keyCode == 72){
+	menos(6);
+	salvar();
+	}
+	if(e.keyCode == 117 || e.keyCode == 85){
+	mais(7);
+	salvar();
+	}
+	if(e.keyCode == 106 || e.keyCode == 74){
+	menos(7);
+	salvar();
+	}
+}
+
+if(telaAtual == 2){
+    
+	if(e.keyCode == 113 || e.keyCode == 81){
+	mais(8);
+	salvar();
+	}
+	if(e.keyCode == 97 || e.keyCode == 65){
+	menos(8);
+	salvar();
+	}
+
+	if(e.keyCode == 119 || e.keyCode == 87){
+	mais(9);
+	salvar();
+	}
+	if(e.keyCode == 115 || e.keyCode == 83){
+	menos(9);
+	salvar();
+	}
+
+	if(e.keyCode == 101 || e.keyCode == 69){
+	mais(10);
+	salvar();
+	}
+	if(e.keyCode == 100 || e.keyCode == 68){
+	menos(10);
+	salvar();
+	}
+
+	if(e.keyCode == 114 || e.keyCode == 82){
+	mais(11);
+	salvar();
+	}
+	if(e.keyCode == 102 || e.keyCode == 70){
+	menos(11);
+	salvar();
+	}
+
+	if(e.keyCode == 116 || e.keyCode == 84){
+	mais(12);
+	salvar();
+	}
+	if(e.keyCode == 103 || e.keyCode == 71){
+	menos(12);
+	salvar();
+	}
+
+	if(e.keyCode == 121 || e.keyCode == 89){
+	mais(13);
+	salvar();
+	}
+	if(e.keyCode == 104 || e.keyCode == 72){
+	menos(13);
+	salvar();
+	}
+	if(e.keyCode == 117 || e.keyCode == 85){
+	mais(14);
+	salvar();
+	}
+	if(e.keyCode == 106 || e.keyCode == 74){
+	menos(14);
+	salvar();
+	}
+}
+
+    
+/*
+var seq = "rainbow"
+var input = ""
+window.addEventListener("keypress", function(e) {
+    input += String.fromCharCode(e.keyCode)
+
+    for (var i = 0; i < seq.length; i++) {
+        if (input[i] != seq[i] && input[i] != undefined) {
+            input = ""
+        }
+    }
+
+    if (input == seq) {
+        alert("EASTER EGG!")
+
+        input = ""
+    }
+})
+*/
+}
+</script>
+    </body>
+    </html>
